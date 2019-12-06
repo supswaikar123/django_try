@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Info</title>
+</head>
+<body>
+
+    {{msg}}
+
+    <center><h3>Bank Admin Page </h3></center>
+    <form action="http://localhost:5000/producer/account/save/" method="post">
+
+    <input type="text" name="accNo" value="{{account.accNo}}" hidden> <br><br>
+
+        Account Holder Name :<input type="text" name="accHolderName" value="{{account.accHolder}}"> <br><br>
+        Account Balance :<input type="text" name="accBal" value="{{account.accBal}}"> <br><br>
+        Account Holder Address :<input type="text" name="accHolderAdr" value="{{account.accHolderAdr}}"> <br><br>
+        Account Type :<input type="text" name="accType" value="{{account.accType}}"> <br><br>
+        <input type="submit">
+    </form>
+
+</body>
+
+<table>
+        <thead>
+        <th>AccNo</th>
+        <th>AccHolder</th>
+        <th>AccBalance</th>
+        <th>AccType</th>
+        <th>AccAdr</th>
+        <th>Action</th>
+        </thead>
+
+        <tbody>
+            {% for acc in accounts %}
+                <td>{{acc.accNo}}</td>
+            <td>{{acc.accHolder}}</td>
+            <td>{{acc.accBal}}</td>
+            <td>{{acc.accType}}</td>
+            <td>{{acc.accHolderAdr}}</td>
+            <td>
+                <a href="/producer/account/edit/{{acc.accNo}}">EDIT</a>
+                <a href="/producer/account/delete/{{acc.accNo}}">DELETE</a>
+            </td>
+            </tbody>
+            {% endfor %}
+
+
+
+
+</table>
+
+</html>
